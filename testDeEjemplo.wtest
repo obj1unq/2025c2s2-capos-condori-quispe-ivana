@@ -1,0 +1,12 @@
+import capos.*
+
+describe "Rolando" {
+  test "Rolando encuentra la espada del destino (la recolecta), libro de hechizos y" {
+    rolando.recolectarArtefactos(espadaDelDestino)
+    assert.that(rolando.artefactos.tieneArtefacto(espadaDelDestino))
+    rolando.recolectarArtefactos(libroDeHechizos)
+    assert.equals(2, rolando.artefactos.size()) // revisar
+    rolando.recolectarArtefactos(collarDivino)
+    assert.notThat(rolando.artefactos.tieneArtefacto(collarDivino))
+  }
+}
