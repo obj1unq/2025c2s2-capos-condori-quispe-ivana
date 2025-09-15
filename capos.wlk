@@ -51,3 +51,4 @@ object collarDivino {
 object armaduraDeAceroValyrio {
   
 }
+//link de material de lectura https://www.wollok.org/documentation/language/
