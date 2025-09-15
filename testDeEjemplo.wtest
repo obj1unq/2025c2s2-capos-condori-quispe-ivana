@@ -6,7 +6,7 @@ describe "Rolando" {
     assert.that(rolando.artefactos.tieneArtefacto(espadaDelDestino))
     rolando.recolectarArtefactos(libroDeHechizos)
     assert.equals(2, rolando.artefactos.size()) // revisar
-    rolando.recolectarArtefactos(collarDivino)
+    rolando.recolectarArtefactos(collarDivino) //
     assert.notThat(rolando.artefactos.tieneArtefacto(collarDivino))
   }
 }
