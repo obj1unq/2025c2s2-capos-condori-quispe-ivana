@@ -17,27 +17,32 @@ object rolando {
     }
     method tieneArtefacto(_artefacto) { 
         //este metodo deberia decir si en el conjunto artefactos se encuentra el artefacto 
-        artefactos.contains(_artefacto) // revisar la documentacion de wollok
+        return artefactos.contains(_artefacto) // revisar la documentacion de wollok
     }
     method casa(){
         return casa // como por ahora rolando no cambia de casa setter innecesario
     } 
     method llegarACasaYDejarArtefactos(){
-        casa.almacen().addAll(self.artefactos()) //forEach({casa => casa.almacen(). })
-        artefactos.removeAll(self.artefactos())
+        casa.almacen().addAll(artefactos) //forEach({casa => casa.almacen(). })
+        artefactos.removeAll(artefactos)//artefactos.removeAll(self.artefactos())
     }
 
+    method verObjetosAlmacenadosYArtefactosEnLaMochila(){ //poseciones
+        return artefactos + casa.almacen() // no se puede hacer union porque retorna un nuevo set sin embargo modifica el otro
+    }//el + de por si crea una nueva coleccion 
+//este metodo es de prueba para llegar
     method agregarArtefactoAlAlmacen(artefacto) {
-        casa.add(artefacto)
+        casa.almacen().add(artefacto)
         self.artefactos().remove(artefacto)
     } //este metodo deberia ester en rolando
+    //-------------------------------------
 }
 object castilloDePiedra {
-  const almacen = []
+  const property almacen = #{}//¿Por que deberia ser conjunto? resulto ser que por el dominio, el objeto de este dominio seria unico
 
-  method almacen(){
+  /*method almacen(){ se agrega property porque tambien tengo que setearla
     return almacen
-  }  
+  }  */
 }
 object espadaDelDestino {
   
@@ -52,3 +57,6 @@ object armaduraDeAceroValyrio {
   
 }
 //link de material de lectura https://www.wollok.org/documentation/language/
+// self.mochila() + castilloDePiedra.almacen()
+//operdador sobrecargado +, 
+//es conmutativo,
