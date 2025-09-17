@@ -9,4 +9,41 @@ describe "Rolando" {
     rolando.recolectarArtefactos(collarDivino) //
     assert.notThat(rolando.artefactos.tieneArtefacto(collarDivino))
   }
+  test "Cosas Que suceden cuando llega al castillo de piedra" {
+    rolando.recolectarArtefactos(espadaDelDestino)
+    rolando.recolectarArtefactos(collarDivino)
+    rolando.llegarACasaYDejarArtefactos()
+    assert.equals(0, rolando.artefactos().size())
+    assert.equals(2, castilloDePiedra.almacen().size())
+
+    rolando.recolectarArtefactos(collarDivino)
+    assert.that(rolando.tieneArtefacto(collarDivino))
+    rolando.llegarACasaYDejarArtefactos()
+    //assert.equals(3, castilloDePiedra.almacen().size())
+  }
+
+  test "posesiones de Rolando" {
+    rolando.recolectarArtefactos(espadaDelDestino)
+    rolando.recolectarArtefactos(collarDivino)
+    rolando.llegarACasaYDejarArtefactos()
+    //rolando.artefactos(armaduraDeAceroValyrio) revisar
+    assert.notThat(rolando.tieneArtefacto(libroDeHechizos))
+    assert.notThat(rolando.posesiones().contains(libroDeHechizos))
+  }
+
+  test "Historial De Recoleccion" {
+    rolando.recolectarArtefactos(espadaDelDestino)
+    rolando.recolectarArtefactos(libroDeHechizos)
+    rolando.recolectarArtefactos(collarDivino)
+    assert.notThat(rolando.tieneArtefacto(collarDivino))
+    rolando.llegarACasaYDejarArtefactos()
+    rolando.recolectarArtefactos(armaduraDeAceroValyrio) 
+    rolando.recolectarArtefactos(collarDivino)
+
+    //consulta de historial
+
+    //assert.that(rolando.historialDeArtefactos().)
+    assert.equals(5, rolando.historialDeArtefactos().size())
+    assert.equals(rolando.historialDeArtefactos(), [espadaDelDestino, libroDeHechizos, collarDivino, armaduraDeAceroValyrio, collarDivino])
+  }
 }
